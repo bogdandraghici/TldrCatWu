@@ -58,15 +58,13 @@
     .recap-col > section#speakers,
     .recap-col > footer.colophon { grid-column: 1 / -1; }
     .recap-col > section#breakdown,
-    .recap-col > section#quotes,
-    .recap-col > section#actions,
     .recap-col > section#topics { grid-column: 1; }
     .recap-col > header.hero > .row > .body,
     .recap-col > section#takeaways > .row > .body,
     .recap-col > section#speakers > .row > .body { max-width: none; }
     .recap-col > header.hero h1.title { text-wrap: pretty; }
     .recap-col > header.hero .dek { max-width: none; }
-    .transcript-sidebar { grid-column: 2; grid-row: span 4; margin-top: 88px; }
+    .transcript-sidebar { grid-column: 2; grid-row: span 2; margin-top: 88px; }
   }
   @media (max-width: 1023px) {
     .page { grid-template-columns: 1fr; column-gap: 0; }
@@ -115,10 +113,11 @@
   .chapter-head h3 { font-family: var(--sans); font-size: clamp(22px, 2.4vw, 26px); font-weight: 700; letter-spacing: -0.012em; color: var(--ink); margin: 0; line-height: 1.18; text-wrap: balance; }
   .chapter-intro { color: var(--ink-soft); font-size: 16.5px; line-height: 1.55; margin: 0 0 28px; max-width: 38em; }
   ol.ideas { list-style: none; padding: 0; margin: 0; }
-  ol.ideas > li { display: grid; grid-template-columns: 64px minmax(0, 1fr); column-gap: 18px; padding: 14px 0; cursor: help; }
+  ol.ideas > li { display: grid; grid-template-columns: 86px minmax(0, 1fr); column-gap: 18px; padding: 14px 0; cursor: help; align-items: start; }
   ol.ideas > li + li { border-top: 1px dashed var(--ink-line); }
-  .timestamp { font-family: var(--mono); font-size: 12.5px; color: var(--ink-faint); padding-top: 4px; font-variant-numeric: tabular-nums; white-space: nowrap; letter-spacing: -0.01em; border-bottom: 0; transition: color .15s ease; }
-  a.timestamp:hover { color: var(--accent); border-bottom: 0; }
+  .timestamp { font-family: var(--mono); font-size: 11.5px; color: var(--accent); padding: 2px 7px; font-variant-numeric: tabular-nums; white-space: nowrap; letter-spacing: -0.01em; border-bottom: 0; border-radius: 3px; background: var(--accent-tint); transition: background .15s ease, color .15s ease; display: inline-block; cursor: pointer; }
+  .timestamp::before { content: "▶"; font-size: 8px; margin-right: 5px; vertical-align: 1px; }
+  a.timestamp:hover { background: var(--accent); color: var(--bg); border-bottom: 0; }
   .idea-body { min-width: 0; }
   .idea-body p { margin: 0; }
   .idea-summary { color: var(--ink); font-size: 16.5px; line-height: 1.55; margin: 0; text-wrap: pretty; }
@@ -148,7 +147,7 @@
     .row > .rail { display: none; }
     .chapter-block { grid-template-columns: 1fr; row-gap: 8px; padding: 36px 0; }
     .chapter-num { font-size: 22px; padding-top: 0; margin-bottom: 4px; }
-    ol.ideas > li { grid-template-columns: 56px 1fr; column-gap: 14px; }
+    ol.ideas > li { grid-template-columns: 76px 1fr; column-gap: 14px; }
     body.player-floating .player-wrap { width: 200px; bottom: 14px; right: 14px; }
     body { font-size: 17px; }
     .hero { padding: 48px 0 36px; }
@@ -886,38 +885,6 @@
         </div>
       </article>
 
-    </div>
-  </section>
-
-  <section id="quotes">
-    <div class="row">
-      <div class="rail"><h2>quotes</h2></div>
-      <div class="body">
-        <div class="quotes-stack">
-          <blockquote>If cloud code failed but enthropic succeeded I would be extremely happy<span class="attribution">Cat Wu · <a href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1906s" target="_blank" rel="noopener" class="timestamp">31:46</a></span></blockquote>
-          <blockquote>As code becomes much cheaper to write, the thing that becomes more valuable is deciding what to write.<span class="attribution">Cat Wu · <a href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1098s" target="_blank" rel="noopener" class="timestamp">18:18</a></span></blockquote>
-          <blockquote>if an automation doesn't work 100% of the time, it's not really an automation.<span class="attribution">Cat Wu · <a href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4205s" target="_blank" rel="noopener" class="timestamp">1:10:05</a></span></blockquote>
-          <blockquote>the 2024 generation of products were chatbased and the quad code generation of products is action-based.<span class="attribution">Cat Wu · <a href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4478s" target="_blank" rel="noopener" class="timestamp">1:14:38</a></span></blockquote>
-          <blockquote>the hard thing is figuring out for the current model. How do you elicit the maximum capability?<span class="attribution">Cat Wu · <a href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3173s" target="_blank" rel="noopener" class="timestamp">52:53</a></span></blockquote>
-          <blockquote>I think jobs are fake.<span class="attribution">Cat Wu · <a href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4796s" target="_blank" rel="noopener" class="timestamp">1:19:56</a></span></blockquote>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="actions">
-    <div class="row">
-      <div class="rail"><h2>try this</h2></div>
-      <div class="body">
-        <ul class="actions">
-          <li>Pick one manual workflow you do weekly — automate it with Claude Code or Cowork and push to 100% accuracy, not 90%.</li>
-          <li>Build apps you actually use every day, not throwaway prototypes you abandon after one shot.</li>
-          <li>Connect Slack, Gmail, Google Calendar, and Google Drive to Cowork before doing anything else with it.</li>
-          <li>Build a product that doesn't fully work yet — when the next model lands, swap it in and see if the gap closes.</li>
-          <li>When the model does something unexpected, ask it to introspect on why — the answer tells you what's wrong in your system prompt or harness.</li>
-          <li>Try the <code>/powerup</code> command in Claude Code to learn the 10 features you actually need.</li>
-        </ul>
-      </div>
     </div>
   </section>
 
