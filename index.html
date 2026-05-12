@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>How Anthropic's product team moves faster than anyone else | Cat Wu — Recap</title>
+
+<meta name="description" content="How Anthropic ships product features in days, why the PM role is collapsing into one skill (product taste), and what separates AI-native operators from the ones falling behind." />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="How Anthropic's product team moves faster than anyone else | Cat Wu — Recap" />
+<meta property="og:description" content="How Anthropic ships product features in days, why the PM role is collapsing into one skill (product taste), and what separates AI-native operators from the ones falling behind." />
+<meta property="og:image" content="https://i.ytimg.com/vi_webp/PplmzlgE0kg/maxresdefault.webp" />
+<meta property="og:image:alt" content="Thumbnail for Cat Wu on Lenny's Podcast" />
+<meta property="og:site_name" content="Podcast recap · Lenny's Podcast" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="How Anthropic's product team moves faster than anyone else | Cat Wu — Recap" />
+<meta name="twitter:description" content="How Anthropic ships product features in days, why the PM role is collapsing into one skill (product taste), and what separates AI-native operators from the ones falling behind." />
+<meta name="twitter:image" content="https://i.ytimg.com/vi_webp/PplmzlgE0kg/maxresdefault.webp" />
+<style>
+  :root {
+    --bg: oklch(0.985 0.005 70); --bg-soft: oklch(0.965 0.006 70);
+    --ink: oklch(0.20 0.008 60); --ink-soft: oklch(0.42 0.008 60);
+    --ink-faint: oklch(0.62 0.008 60); --ink-line: oklch(0.88 0.006 60);
+    --accent: oklch(0.40 0.14 22); --accent-hi: oklch(0.48 0.16 22);
+    --accent-tint: oklch(0.95 0.025 22); --snippet-bg: oklch(0.965 0.006 70);
+    --serif: ui-serif, "Iowan Old Style", "Charter", Georgia, serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+    --rail: 96px; --col: min(660px, 100% - var(--rail) - 32px); --page-max: 900px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 17.5px; line-height: 1.65; font-feature-settings: "kern", "liga", "calt"; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: color .15s ease, border-color .15s ease; }
+  a:hover { color: var(--accent-hi); border-bottom-color: currentColor; }
+  ::selection { background: var(--accent-tint); color: var(--ink); }
+  .page { max-width: var(--page-max); margin: 0 auto; padding: 0 28px 120px; }
+  .row { display: grid; grid-template-columns: var(--rail) minmax(0, 1fr); column-gap: 32px; align-items: start; }
+  .row > .rail { padding-top: .15em; }
+  .row > .body { max-width: var(--col); }
+  .hero { padding: 72px 0 56px; }
+  .hero .row { row-gap: 28px; }
+  .eyebrow { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: .04em; text-transform: uppercase; margin: 0; }
+  h1.title { font-family: var(--sans); font-size: clamp(34px, 4.8vw, 52px); line-height: 1.06; font-weight: 700; letter-spacing: -0.022em; margin: 4px 0 18px; color: var(--ink); text-wrap: balance; }
+  .dek { font-size: clamp(19px, 1.8vw, 22px); line-height: 1.45; color: var(--ink-soft); margin: 0 0 28px; max-width: 32em; font-weight: 400; }
+  .byline { font-family: var(--sans); font-size: 14.5px; color: var(--ink-soft); margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0 10px; }
+  .byline .channel { color: var(--ink); font-weight: 600; }
+  .byline .sep { color: var(--ink-line); }
+  .player-wrap { position: relative; width: 100%; aspect-ratio: 16/9; margin: 0 0 32px; border-radius: 4px; overflow: hidden; background: #000; box-shadow: 0 1px 0 var(--ink-line), 0 18px 40px -24px oklch(0.40 0.14 22 / 0.35); transition: width .25s cubic-bezier(0.22,1,0.36,1), height .25s cubic-bezier(0.22,1,0.36,1), bottom .25s ease, right .25s ease, box-shadow .25s ease, border-radius .25s ease; }
+  .player-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+  body.player-floating .player-wrap { position: fixed; bottom: 24px; right: 24px; width: min(360px, 38vw); height: auto; aspect-ratio: 16/9; margin: 0; z-index: 100; border-radius: 6px; border: 2px solid var(--accent); box-shadow: 0 18px 50px -10px oklch(0.20 0.04 60 / .45); }
+  .player-close { position: absolute; top: 8px; right: 8px; width: 26px; height: 26px; border-radius: 50%; background: oklch(0 0 0 / .55); color: #fff; border: 0; cursor: pointer; font-size: 16px; line-height: 1; display: none; align-items: center; justify-content: center; z-index: 2; font-family: var(--sans); }
+  body.player-floating .player-close { display: flex; }
+  body.player-hidden .player-wrap { display: none; }
+  body.player-hidden .player-restore-bar { display: flex; }
+  .player-restore-bar { display: none; position: fixed; bottom: 20px; right: 20px; z-index: 99; background: var(--ink); color: var(--bg); padding: 8px 14px; border-radius: 999px; font-family: var(--sans); font-size: 13px; cursor: pointer; border: 0; box-shadow: 0 10px 30px -12px oklch(0 0 0 / .35); align-items: center; gap: 6px; }
+  .player-restore-bar:hover { background: var(--accent); }
+  section { margin: 88px 0 0; scroll-margin-top: 24px; }
+  h2 { font-family: var(--sans); font-size: 14px; font-weight: 600; color: var(--ink-faint); letter-spacing: 0.02em; margin: 0 0 22px; text-transform: lowercase; }
+  h2::before { content: "§ "; color: var(--accent); }
+  ol.takeaways { list-style: none; padding: 0; margin: 0; counter-reset: tk; }
+  ol.takeaways li { counter-increment: tk; display: grid; grid-template-columns: 54px minmax(0, 1fr); column-gap: 18px; padding: 18px 0; border-top: 1px solid var(--ink-line); }
+  ol.takeaways li:last-child { border-bottom: 1px solid var(--ink-line); }
+  ol.takeaways li::before { content: counter(tk, decimal-leading-zero); font-family: var(--mono); font-size: 14px; color: var(--accent); padding-top: 2px; font-variant-numeric: tabular-nums; }
+  ol.takeaways li strong { grid-column: 2; display: block; font-weight: 600; color: var(--ink); font-size: 18px; line-height: 1.4; margin-bottom: 4px; }
+  ol.takeaways li .desc { grid-column: 2; display: block; color: var(--ink-soft); font-size: 16px; line-height: 1.55; }
+  .speakers { display: flex; flex-direction: column; gap: 18px; }
+  .speaker { font-size: 15.5px; line-height: 1.55; color: var(--ink-soft); }
+  .speaker .name { color: var(--ink); font-weight: 600; }
+  .speaker .role { color: var(--ink-faint); }
+  .speaker .sep { color: var(--ink-line); margin: 0 6px; }
+  .breakdown { counter-reset: ch; }
+  .chapter-block { counter-increment: ch; display: grid; grid-template-columns: var(--rail) minmax(0, 1fr); column-gap: 32px; padding: 48px 0; border-top: 1px solid var(--ink-line); }
+  .chapter-block:first-of-type { border-top: 0; padding-top: 0; }
+  .chapter-num { font-family: var(--mono); font-size: 32px; font-weight: 500; color: var(--accent); letter-spacing: -0.02em; line-height: 1; padding-top: 6px; font-variant-numeric: tabular-nums; }
+  .chapter-num::before { content: counter(ch, decimal-leading-zero); }
+  .chapter-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin: 0 0 6px; }
+  .chapter-head h3 { font-family: var(--sans); font-size: clamp(22px, 2.4vw, 26px); font-weight: 700; letter-spacing: -0.012em; color: var(--ink); margin: 0; line-height: 1.18; text-wrap: balance; }
+  .chapter-intro { color: var(--ink-soft); font-size: 16.5px; line-height: 1.55; margin: 0 0 28px; max-width: 38em; }
+  ol.ideas { list-style: none; padding: 0; margin: 0; }
+  ol.ideas > li { display: grid; grid-template-columns: 64px minmax(0, 1fr); column-gap: 18px; padding: 14px 0; }
+  ol.ideas > li + li { border-top: 1px dashed var(--ink-line); }
+  .timestamp { font-family: var(--mono); font-size: 12.5px; color: var(--ink-faint); padding-top: 4px; font-variant-numeric: tabular-nums; white-space: nowrap; letter-spacing: -0.01em; border-bottom: 0; transition: color .15s ease; }
+  a.timestamp:hover { color: var(--accent); border-bottom: 0; }
+  .idea-body { min-width: 0; }
+  .idea-body p { margin: 0; }
+  .idea-summary { color: var(--ink); font-size: 16.5px; line-height: 1.55; margin-bottom: 8px !important; text-wrap: pretty; }
+  .idea-source { font-family: var(--mono); font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); background: var(--snippet-bg); padding: 8px 12px; border-radius: 2px; display: inline-block; max-width: 100%; }
+  .idea-source::before { content: "transcript · "; color: var(--ink-faint); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; margin-right: 4px; }
+  figure.diagram { margin: 24px 0 8px; padding: 24px; background: var(--bg-soft); border-radius: 4px; border: 1px solid var(--ink-line); }
+  figure.diagram svg { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+  figure.diagram figcaption { font-family: var(--sans); font-size: 13px; color: var(--ink-faint); margin-top: 14px; text-align: left; }
+  blockquote { margin: 12px 0; padding: 0; font-family: var(--serif); font-size: clamp(22px, 2.4vw, 27px); line-height: 1.35; color: var(--ink); font-weight: 400; text-wrap: pretty; }
+  blockquote::before { content: "“"; color: var(--accent); margin-right: 2px; }
+  blockquote::after { content: "”"; color: var(--accent); margin-left: 2px; }
+  blockquote .attribution { display: block; margin-top: 14px; font-family: var(--sans); font-size: 13.5px; font-style: normal; color: var(--ink-faint); font-weight: 400; }
+  blockquote .attribution a { color: var(--ink-faint); }
+  .quotes-stack { display: flex; flex-direction: column; gap: 36px; }
+  ul.actions { list-style: none; padding: 0; margin: 0; }
+  ul.actions li { position: relative; padding: 12px 0 12px 32px; color: var(--ink); font-size: 16.5px; line-height: 1.55; border-top: 1px solid var(--ink-line); }
+  ul.actions li:last-child { border-bottom: 1px solid var(--ink-line); }
+  ul.actions li::before { content: ""; position: absolute; left: 0; top: 17px; width: 14px; height: 14px; border: 1.5px solid var(--ink-faint); border-radius: 2px; background: transparent; }
+  .topics-line { font-size: 14px; color: var(--ink-soft); line-height: 1.8; }
+  .topics-line .label { color: var(--ink-faint); font-family: var(--mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; margin-right: 8px; }
+  .topics-line .tag { display: inline; margin-right: 4px; }
+  .topics-line .tag:not(:last-child)::after { content: " · "; color: var(--ink-line); }
+  footer.colophon { margin-top: 96px; padding-top: 24px; border-top: 1px solid var(--ink-line); font-size: 13px; color: var(--ink-faint); line-height: 1.6; }
+  @media (max-width: 720px) {
+    :root { --rail: 0px; }
+    .page { padding: 0 22px 80px; }
+    .row { grid-template-columns: 1fr; row-gap: 12px; }
+    .row > .rail { display: none; }
+    .chapter-block { grid-template-columns: 1fr; row-gap: 8px; padding: 36px 0; }
+    .chapter-num { font-size: 22px; padding-top: 0; margin-bottom: 4px; }
+    ol.ideas > li { grid-template-columns: 56px 1fr; column-gap: 14px; }
+    body.player-floating .player-wrap { width: 200px; bottom: 14px; right: 14px; }
+    body { font-size: 17px; }
+    .hero { padding: 48px 0 36px; }
+    section { margin-top: 64px; }
+    h1.title { font-size: clamp(30px, 7vw, 40px); }
+  }
+  @media print {
+    :root { --bg: #fff; --snippet-bg: #f4f1ec; }
+    .player-wrap, .player-restore-bar { display: none !important; }
+    body { font-size: 11.5pt; color: #1a1814; }
+    a { color: #1a1814; border-bottom: 0; }
+    .timestamp, .idea-source { background: transparent; }
+    section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="hero">
+    <div class="player-wrap" id="player-wrap">
+      <iframe id="ytplayer" src="https://www.youtube.com/embed/PplmzlgE0kg?enablejsapi=1&rel=0" title="How Anthropic's product team moves faster than anyone else | Cat Wu" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+      <button class="player-close" id="player-close" title="Hide player" aria-label="Hide player">×</button>
+    </div>
+
+    <div class="row">
+      <div class="rail"><p class="eyebrow">Recap</p></div>
+      <div class="body">
+        <h1 class="title">How Anthropic's product team moves faster than anyone else</h1>
+        <p class="dek">How Anthropic ships product features in days, why the PM role is collapsing into one skill — product taste — and what separates AI-native operators from the ones falling behind.</p>
+        <p class="byline">
+          <span class="channel">Lenny's Podcast</span>
+          <span class="sep">·</span><span>1h 25m</span>
+          <span class="sep">·</span><span>April 23, 2026</span>
+          <span class="sep">·</span><span>18 min read</span>
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <section id="takeaways">
+    <div class="row">
+      <div class="rail"><h2>takeaways</h2></div>
+      <div class="body">
+        <ol class="takeaways">
+          <li><strong>Ship cycles collapsed from 6 months to 1 day.</strong><span class="desc">"Research preview" branding lowers commitment so engineers can launch in a week without a roadmap dance — and the whole org has internalized the cadence.</span></li>
+          <li><strong>The three roles are merging into one.</strong><span class="desc">PMs do engineering, engineers do PM, designers ship code. Claude Code's preferred hire is an engineer with product taste, not a PM who can also code.</span></li>
+          <li><strong>Product taste is the only durable PM skill.</strong><span class="desc">As code gets cheap, deciding what to build is the bottleneck. Tens of thousands of GitHub issues land — knowing which to act on requires care, not throughput.</span></li>
+          <li><strong>Build for today's model, not the AGI version of it.</strong><span class="desc">Building a text box for a super-smart future model is easy. The hard work is eliciting maximum capability from the model that shipped this morning.</span></li>
+          <li><strong>Mission beats product line — that's the Anthropic moat.</strong><span class="desc">"If Claude Code failed but Anthropic succeeded I'd be extremely happy" — when teams will sacrifice their own KRs for the org's mission, cross-functional tradeoffs stop being political.</span></li>
+          <li><strong>New models force you to remove features, not add them.</strong><span class="desc">Every model launch triggers a system-prompt audit. Crutches (like the to-do list) get deleted as soon as the model does the behavior naturally.</span></li>
+          <li><strong>95% automation is not automation.</strong><span class="desc">Most users get to 90% and quit. The last 10% is where real leverage starts — and getting there is teaching, not prompting.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="speakers">
+    <div class="row">
+      <div class="rail"><h2>speakers</h2></div>
+      <div class="body">
+        <div class="speakers">
+          <p class="speaker"><span class="name">Cat Wu</span><span class="sep">·</span><span class="role">Head of Product, Claude Code &amp; Cowork at Anthropic</span><span class="sep">·</span>Engineer for many years, briefly in VC, now interviews hundreds of PMs trying to break into AI. Rock climber.</p>
+          <p class="speaker"><span class="name">Lenny Rachitsky</span><span class="sep">·</span><span class="role">Host, Lenny's Podcast</span><span class="sep">·</span>Former Airbnb PM; runs the most-read product newsletter and podcast in the field.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="breakdown">
+    <div class="row"><div class="rail"><h2>breakdown</h2></div><div class="body"></div></div>
+
+    <div class="breakdown">
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head">
+            <h3>Introduction</h3>
+            <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=0s" target="_blank" rel="noopener">00:00</a>
+          </div>
+          <p class="chapter-intro">Lenny's cold open splices three of Cat's strongest claims as a teaser for what follows.</p>
+          <ol class="ideas">
+            <li>
+              <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=0s" target="_blank" rel="noopener">00:00</a>
+              <div class="idea-body">
+                <p class="idea-summary">The hardest part of building for AI is calibrating to the current model, not the AGI version of it.</p>
+                <p class="idea-source">It's very easy to build the product for the super AGI strong model. The hard thing is figuring out for the current model, how do you elicit the maximum capability?</p>
+              </div>
+            </li>
+            <li>
+              <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=17s" target="_blank" rel="noopener">00:17</a>
+              <div class="idea-body">
+                <p class="idea-summary">Anthropic has compressed product-feature timelines from 6 months to as little as a single day.</p>
+                <p class="idea-source">The timelines for a lot of our product features have gone down from 6 month to 1 month and sometimes to even one day.</p>
+              </div>
+            </li>
+            <li>
+              <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=48s" target="_blank" rel="noopener">00:48</a>
+              <div class="idea-body">
+                <p class="idea-summary">As code becomes cheaper to write, deciding what to write becomes the valuable skill.</p>
+                <p class="idea-source">As code becomes much cheaper to write, the thing that becomes more valuable is deciding what to write.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head">
+            <h3>Working with Boris Cherny</h3>
+            <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=89s" target="_blank" rel="noopener">01:29</a>
+          </div>
+          <p class="chapter-intro">Cat describes the division of labor with Boris, Claude Code's creator and tech lead.</p>
+          <ol class="ideas">
+            <li>
+              <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=136s" target="_blank" rel="noopener">02:16</a>
+              <div class="idea-body">
+                <p class="idea-summary">Boris owns the 3–6 month product vision; Cat owns the path from today to that vision.</p>
+                <p class="idea-source">He's our tech lead. He's very much the product visionary and he is great at setting like this is what the product needs to be in like three months, six months from now.</p>
+              </div>
+            </li>
+            <li>
+              <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=164s" target="_blank" rel="noopener">02:44</a>
+              <div class="idea-body">
+                <p class="idea-summary">Cat's primary domain is cross-functional — making sure marketing, sales, finance, and capacity teams are bought in so launches aren't blocked.</p>
+                <p class="idea-source">I spend more of my time on the cross functional. So making sure that our marketing team, sales team, finance, capacity, etc. are like bought in on the plan</p>
+              </div>
+            </li>
+            <li>
+              <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=180s" target="_blank" rel="noopener">03:00</a>
+              <div class="idea-body">
+                <p class="idea-summary">The split with Boris is ~80% mind-meld, with two 20% slivers each cares about more and just drives.</p>
+                <p class="idea-source">I think we're like 80% mind-l and then there's like this 20% of things that like maybe I care a lot more about them for us. So like I'll drive those</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head">
+            <h3>What Anthropic looks for when hiring PMs</h3>
+            <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=269s" target="_blank" rel="noopener">04:29</a>
+          </div>
+          <p class="chapter-intro">After interviewing hundreds of PMs, Cat sees most of them approaching the AI-native role wrong.</p>
+          <ol class="ideas">
+            <li>
+              <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=303s" target="_blank" rel="noopener">05:03</a>
+              <div class="idea-body">
+                <p class="idea-summary">Before AI, slower tech shifts allowed 6–12 month roadmaps with heavy cross-team coordination because code was expensive to write.</p>
+                <p class="idea-source">I think before AI, technology shifts were a lot slower. So, you could plan on the 6 to 12 month time horizons.</p>
+              </div>
+            </li>
+            <li>
+              <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=335s" target="_blank" rel="noopener">05:35</a>
+              <div class="idea-body">
+                <p class="idea-summary">AI has collapsed feature timelines from 6 months to 1 month, sometimes to a single day.</p>
+                <p class="idea-source">the timelines for a lot of our product features have gone down from 6 months to one month and sometimes to one week or even one day.</p>
+              </div>
+            </li>
+            <li>
+              <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=351s" target="_blank" rel="noopener">05:51</a>
+              <div class="idea-body">
+                <p class="idea-summary">Therefore PMs should de-emphasize multi-quarter roadmap alignment and emphasize getting something out the door this week.</p>
+                <p class="idea-source">there should be less emphasis on making sure that you're aligning your like multi-quarter road maps with your partner teams and more emphasis on okay, how can we figure out the fastest way to get something out the door?</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head">
+            <h3>How to help your teams move fast</h3>
+            <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=378s" target="_blank" rel="noopener">06:18</a>
+          </div>
+          <p class="chapter-intro">Three concrete practices that compress idea → shipped to about a week.</p>
+          <ol class="ideas">
+            <li>
+              <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=379s" target="_blank" rel="noopener">06:19</a>
+              <div class="idea-body">
+                <p class="idea-summary">The best AI-native PMs shorten idea-to-user time and define which tasks must work out of the box.</p>
+                <p class="idea-source">the PMs who do the best on AI native products are are the ones who can figure out how can I like shorten the time from having this idea to actually getting the product in the hands of users</p>
+              </div>
+            </li>
+            <li>
+              <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=418s" target="_blank" rel="noopener">06:58</a>
+              <div class="idea-body">
+                <p class="idea-summary">First practice: set clear goals — LLMs are general, so ambiguity in users / problem / use cases will explode without them.</p>
+                <p class="idea-source">the first thing is to set clear queer goals because LMS are so general that actually creates a lot of ambiguity in who we're building for, what problems we're trying to solve, what the top use cases are.</p>
+              </div>
+            </li>
+            <li>
+              <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=448s" target="_blank" rel="noopener">07:28</a>
+              <div class="idea-body">
+                <p class="idea-summary">Example of a goal sharp enough to rule out bad approaches: "professional developers at enterprises safely get to zero permission prompts."</p>
+                <p class="idea-source">we we want professional developers at enterprises to safely get to zero permission prompts.</p>
+              </div>
+            </li>
+            <li>
+              <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=469s" target="_blank" rel="noopener">07:49</a>
+              <div class="idea-body">
+                <p class="idea-summary">Second practice: a repeatable shipping process. Claude Code ships nearly every feature as a branded "research preview."</p>
+                <p class="idea-source">uh for cloud code what we do is we actually ship almost all of our features in research preview.</p>
+              </div>
+            </li>
+            <li>
+              <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=490s" target="_blank" rel="noopener">08:10</a>
+              <div class="idea-body">
+                <p class="idea-summary">Research-preview branding lowers the team's commitment so a feature can ship in a week or two.</p>
+                <p class="idea-source">what this does is it reduces it reduces our commitment for shipping something. We can just get something out in a week or two.</p>
+              </div>
+            </li>
+            <li>
+              <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=497s" target="_blank" rel="noopener">08:17</a>
+              <div class="idea-body">
+                <p class="idea-summary">Third practice: the PM builds the framework that tells the team when and how to pull in cross-functional partners.</p>
+                <p class="idea-source">the third thing that a PM should do is help create the framework for the team so that they know when to pull in cross functional partners and what those crossunctional partners expectations are.</p>
+              </div>
+            </li>
+            <li>
+              <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=511s" target="_blank" rel="noopener">08:31</a>
+              <div class="idea-body">
+                <p class="idea-summary">Engineers post into an "evergreen launch room"; docs and PMM turn around the announcement next-day.</p>
+                <p class="idea-source">they post it in our evergreen launch room. And then Sarah who leads our docs and Alex who leads PMM and Tar and Lydia on Devril just like jump in and can turn around the the marketing announcement for it the very next day.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head">
+            <h3>How PRDs and roadmaps have evolved</h3>
+            <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=538s" target="_blank" rel="noopener">08:58</a>
+          </div>
+          <p class="chapter-intro">PRDs aren't dead — they're now thin one-pagers reserved for genuinely ambiguous bets.</p>
+          <ol class="ideas">
+            <li>
+              <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=552s" target="_blank" rel="noopener">09:12</a>
+              <div class="idea-body">
+                <p class="idea-summary">Two artifacts replace traditional PRDs: weekly metrics readouts with the whole team, and a written list of team principles.</p>
+                <p class="idea-source">we have very rigorous metrics and we do metrics readouts with the entire team every week.</p>
+              </div>
+            </li>
+            <li>
+              <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=589s" target="_blank" rel="noopener">09:49</a>
+              <div class="idea-body">
+                <p class="idea-summary">Articulating who the key users are and what tradeoffs the team will make lets anyone decide alone, without blocking on a PM.</p>
+                <p class="idea-source">it lets people make decisions by themselves without feeling like they're blocked on PM or any other stakeholder.</p>
+              </div>
+            </li>
+            <li>
+              <a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=603s" target="_blank" rel="noopener">10:03</a>
+              <div class="idea-body">
+                <p class="idea-summary">PRDs still exist for ambiguous features (a one-pager covering goals, delightful use cases, failure modes) and for heavy infra projects.</p>
+                <p class="idea-source">I think for features that are like particularly ambiguous, it it does help to write out just a one-pager on what the goals are, uh what the delightful use cases are, what the failure modes currently are that we need to fix.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>The Mythos model and shipping velocity</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=628s" target="_blank" rel="noopener">10:28</a></div>
+          <p class="chapter-intro">Lenny asks whether internal access to Mythos explains the speed. Cat: not really.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=634s" target="_blank" rel="noopener">10:34</a><div class="idea-body"><p class="idea-summary">An Anthropic launches calendar shows a major feature or product nearly every day.</p><p class="idea-source">someone made this calendar of launches across Anthropic and it was literally every day there was like a major feature or product.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=663s" target="_blank" rel="noopener">11:03</a><div class="idea-body"><p class="idea-summary">The team's pace predates Mythos by several quarters; Mythos hasn't been the main accelerant.</p><p class="idea-source">We've been moving pretty fast for several quarters now.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=682s" target="_blank" rel="noopener">11:22</a><div class="idea-body"><p class="idea-summary">The bulk of the velocity comes from process and team expectations, not the model.</p><p class="idea-source">I think a lot of it is the process and the expectation on the team.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=686s" target="_blank" rel="noopener">11:26</a><div class="idea-body"><p class="idea-summary">Anthropic is intentionally low-process — every team member is empowered to ship in under a week, sometimes in a day.</p><p class="idea-source">we're very low on process. We want to remove every single barrier to shipping things.</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>What happened with the Claude Code source-code leak</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=714s" target="_blank" rel="noopener">11:54</a></div>
+          <p class="chapter-intro">Cat addresses the recent Claude Code source-code leak on the record.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=735s" target="_blank" rel="noopener">12:15</a><div class="idea-body"><p class="idea-summary">The leak was human error during a package-release update — and it passed two layers of human review.</p><p class="idea-source">we realized that this was the result of human error. There was um a human working with claw to write uh PR.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=751s" target="_blank" rel="noopener">12:31</a><div class="idea-body"><p class="idea-summary">Despite two reviews, the change slipped through — the team has since hardened the process.</p><p class="idea-source">it actually went through two layers of human review.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=762s" target="_blank" rel="noopener">12:42</a><div class="idea-body"><p class="idea-summary">The person responsible is still at Anthropic — the team frames it as a process failure to learn from, not a person to fire.</p><p class="idea-source">It's it's a process failure and the most important thing is to just like learn from it and to add more safeguards so that doesn't happen again.</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>Integrating with OpenClaw</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=773s" target="_blank" rel="noopener">12:53</a></div>
+          <p class="chapter-intro">Why Anthropic restricted subscription usage from OpenClaude, in plain terms.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=798s" target="_blank" rel="noopener">13:18</a><div class="idea-body"><p class="idea-summary">Claude wasn't designed for third-party harness usage patterns — they differ structurally from first-party usage.</p><p class="idea-source">It wasn't designed for third party products which have different uh usage patterns than our first party ones.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=824s" target="_blank" rel="noopener">13:44</a><div class="idea-body"><p class="idea-summary">Everyone affected gets credits alongside their subscription as a transition path — Cat was glad they could land that.</p><p class="idea-source">I was very happy to be able to say that everyone gets some credits alongside their subscription.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=831s" target="_blank" rel="noopener">13:51</a><div class="idea-body"><p class="idea-summary">The hard decision: prioritize first-party products and the API over third-party usage of subscriptions.</p><p class="idea-source">we did have to make the hard decision that we needed to prioritize our first party products and our API.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=843s" target="_blank" rel="noopener">14:03</a><div class="idea-body"><p class="idea-summary">Lenny's read: $200/month subscriptions can't sustainably subsidize unlimited high-demand compute.</p><p class="idea-source">you guys are subsidizing this usage at like 200 bucks a month and there's like it's like basically unlimited use of this</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>How the PM team is structured at Anthropic</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=859s" target="_blank" rel="noopener">14:19</a></div>
+          <p class="chapter-intro">The PM org is roughly 30–40 people across five specialized sub-teams.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=866s" target="_blank" rel="noopener">14:26</a><div class="idea-body"><p class="idea-summary">There are around 30–40 PMs across the company, split across several specialized teams.</p><p class="idea-source">I think we're maybe around 30 or 40 PMs right now.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=871s" target="_blank" rel="noopener">14:31</a><div class="idea-body"><p class="idea-summary">Research PM team (led by Diane) routes customer model feedback to the research team and shepherds model launches.</p><p class="idea-source">we have the research PM team uh who Diane leads and this team is responsible for understanding all of the feedback from our customers for our models</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=889s" target="_blank" rel="noopener">14:49</a><div class="idea-body"><p class="idea-summary">The developer platform team maintains the APIs Claude Code is built on, plus surfaces like Managed Agents.</p><p class="idea-source">there's the cloud developer platform team that maintains the APIs that cloud code is built on top of and they also release things like managed agents</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=914s" target="_blank" rel="noopener">15:14</a><div class="idea-body"><p class="idea-summary">An enterprise team handles cost controls, RBAC, and security so Claude Code and Cowork can be adopted at scale.</p><p class="idea-source">this is everything from like cost controls, arvback, security controls and just making sure that these enterprises feel very confident and comfortable</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=925s" target="_blank" rel="noopener">15:25</a><div class="idea-body"><p class="idea-summary">A growth team works across the whole suite — Claude Code, Cowork, and the Cloud Developer Platform.</p><p class="idea-source">we also have our growth team that is responsible for growing across our entire product suite.</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>How engineer and PM roles are merging</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=942s" target="_blank" rel="noopener">15:42</a></div>
+          <p class="chapter-intro">Amole argued you need more PMs as engineers ship faster. Cat's view: all the roles are collapsing into one.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=964s" target="_blank" rel="noopener">16:04</a><div class="idea-body"><p class="idea-summary">Lenny relays Amole's take: engineers shipping faster means PMs and designers can't keep up, so the answer is more PMs.</p><p class="idea-source">his take is he needs more PMs because it's hard to keep up.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=975s" target="_blank" rel="noopener">16:15</a><div class="idea-body"><p class="idea-summary">Cat's view: every role is merging — PMs do engineering, engineers do PM, designers do both and ship code.</p><p class="idea-source">I think all of the roles are merging. PMs are doing some engineering work, engineers are doing PM work, designers are PMing and also landing code.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=986s" target="_blank" rel="noopener">16:26</a><div class="idea-body"><p class="idea-summary">Two valid strategies exist: hire engineers with product taste, or keep eng hiring flat and add PMs to direct them.</p><p class="idea-source">You can either hire a lot more engineers who have great product taste or you can uh keep your engineering hiring the same and hire a lot more PMs to help guide some of their work.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1000s" target="_blank" rel="noopener">16:40</a><div class="idea-body"><p class="idea-summary">Claude Code prefers strategy #1 — engineers with great product taste, reducing the overhead of shipping.</p><p class="idea-source">on our team we're pretty focused on hiring engineers with great product taste.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1012s" target="_blank" rel="noopener">16:52</a><div class="idea-body"><p class="idea-summary">Some engineers go from Twitter feedback to shipped product in a week with almost no PM involvement.</p><p class="idea-source">there are many engineers on our team who are fully able to end to end go from see user feedback on Twitter through to like ship a product at the end of the week with almost no product involvement.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1034s" target="_blank" rel="noopener">17:14</a><div class="idea-body"><p class="idea-summary">Product taste is still rare — Anthropic will hire almost anyone who can clearly demonstrate it.</p><p class="idea-source">I think product taste is still a very rare skill to have and we'll pretty much hire anyone who we feel has demonstrated this strongly.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1056s" target="_blank" rel="noopener">17:36</a><div class="idea-body"><p class="idea-summary">Almost every Claude Code PM has either been an engineer or actively ships code on the team; even designers came from front-end backgrounds.</p><p class="idea-source">almost all the PMs on our team have either been engineers or ship code uh here on cloud code</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>Why product taste is the most valuable skill</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1074s" target="_blank" rel="noopener">17:54</a></div>
+          <p class="chapter-intro">If you only learn one skill for the AI era, learn to decide what to build.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1098s" target="_blank" rel="noopener">18:18</a><div class="idea-body"><p class="idea-summary">As code gets cheap, deciding what to write becomes the valuable skill — UX, delight, prioritization.</p><p class="idea-source">As code becomes much cheaper to write, the thing that becomes more valuable is deciding what to write.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1113s" target="_blank" rel="noopener">18:33</a><div class="idea-body"><p class="idea-summary">Tens of thousands of GitHub issues land asking for everything under the sun — care and taste decide which to act on.</p><p class="idea-source">we get tens of thousands of GitHub issues asking for every single thing under the sun and it takes a lot of care and taste to figure out okay which of these is worth building</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1135s" target="_blank" rel="noopener">18:55</a><div class="idea-body"><p class="idea-summary">An engineering background is uniquely useful right now because you can sense how hard something will be — which drives prioritization.</p><p class="idea-source">if you have an engineering background, you have a better sense for how hard something should be. And that's often a factor in what you choose to build.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1178s" target="_blank" rel="noopener">19:38</a><div class="idea-body"><p class="idea-summary">Cat hedges "for the next few months" — she expects another big capability shift to change which skills matter.</p><p class="idea-source">I think the valued skill sets does change quite frequently and so it's really hard to predict more than a few months out.</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>Where human brains will continue to be useful</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1210s" target="_blank" rel="noopener">20:10</a></div>
+          <p class="chapter-intro">Cat's list of skills that survive the next round of model improvements.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1232s" target="_blank" rel="noopener">20:32</a><div class="idea-body"><p class="idea-summary">The work is becoming amorphous — great PMs identify all the gaps and jump into the highest-priority ones.</p><p class="idea-source">the work is becoming more amorphous which means that a great PM is able to understand what all the gaps are to figure out what the highest priority ones are</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1254s" target="_blank" rel="noopener">20:54</a><div class="idea-body"><p class="idea-summary">The current environment rewards people who wear many hats, swap them, and are low-ego about which work helps the team move.</p><p class="idea-source">the current environment values people who are who are able to wear a lot of hats are able to swap them and are like very low ego about what work they do to help the team move faster.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1303s" target="_blank" rel="noopener">21:43</a><div class="idea-body"><p class="idea-summary">Humans still provide common sense the models don't — especially about stakeholders, venues, and tacit/EQ knowledge.</p><p class="idea-source">I think humans still provide a level of common sense that the models don't.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1319s" target="_blank" rel="noopener">21:59</a><div class="idea-body"><p class="idea-summary">A product launch has a thousand small moving pieces; the model often doesn't sense who all the stakeholders are or how they relate.</p><p class="idea-source">there's like a thousand moving pieces to any product launch. Some of them are very small, but there's always a lot that could potentially go wrong.</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>How to stay sane in constant chaos</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1343s" target="_blank" rel="noopener">22:23</a></div>
+          <p class="chapter-intro">The cultural antidote to constant change: hire people who lean into chaos.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1359s" target="_blank" rel="noopener">22:39</a><div class="idea-body"><p class="idea-summary">Anthropic deliberately hires people who lean into chaos and face challenges with a smile.</p><p class="idea-source">our team is full of people who lean into the chaos. So, we try to face every challenge with a smile</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1370s" target="_blank" rel="noopener">22:50</a><div class="idea-body"><p class="idea-summary">If you get too stressed about any one fire, you'll burn out — there are too many simultaneous risks.</p><p class="idea-source">if you get too stressed about anything you'll burn out.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1412s" target="_blank" rel="noopener">23:32</a><div class="idea-body"><p class="idea-summary">By Monday afternoon three P0s have replaced Sunday's P0 — and you can't believe you stressed about the old one.</p><p class="idea-source">by Monday afternoon there's a P 0000 and you're like wow, I can't believe I was so worried about that P 0 from Sunday.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1420s" target="_blank" rel="noopener">23:40</a><div class="idea-body"><p class="idea-summary">Brutally prioritize, sleep well so next-day decisions are good, and be okay letting some products ship less polished than you'd like.</p><p class="idea-source">you just have to acknowledge that there's only so much that you can do that you need to sleep well so that you can make good decisions next day and just like brutally prioritize where you spend your time.</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>What gets sacrificed when you ship so fast</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1456s" target="_blank" rel="noopener">24:16</a></div>
+          <p class="chapter-intro">The cost of shipping daily: deliberate feature overlap and a heavier user-attention tax.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1456s" target="_blank" rel="noopener">24:16</a><div class="idea-body"><p class="idea-summary">Buggy launches used to keep Cat up at night; now she's at peace knowing feedback comes fast and the next release fixes it.</p><p class="idea-source">Launching a feature that is buggy is the kind of thing that would have kept me up at night. But it is something that I am now able to like live with</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1503s" target="_blank" rel="noopener">25:03</a><div class="idea-body"><p class="idea-summary">Anthropic tends to hire people who have been in the industry through ups and downs — they know how to maintain energy over time.</p><p class="idea-source">we also tend to hire people who have been in the industry for a while and have experienced lots of ups and downs and have a good sense for what gives them energy</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1542s" target="_blank" rel="noopener">25:42</a><div class="idea-body"><p class="idea-summary">The single biggest sacrifice from shipping so fast is product consistency — Claude Code intentionally has overlapping features.</p><p class="idea-source">We're sacrificing product consistency.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1574s" target="_blank" rel="noopener">26:14</a><div class="idea-body"><p class="idea-summary">Sometimes two form factors ship together so the external audience can vote on which works better.</p><p class="idea-source">A lot of the times it's because there's two form factors that we love internally and we want to we want the external audience to tell us which one is better.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1585s" target="_blank" rel="noopener">26:25</a><div class="idea-body"><p class="idea-summary">The cost: a new user can't tell the best path to accomplish X — there's more education burden than in classic SaaS.</p><p class="idea-source">a new user might not know okay what is the best path to accomplish X. There is more education we need to do</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1629s" target="_blank" rel="noopener">27:09</a><div class="idea-body"><p class="idea-summary">Traditional monthly releases gave users a comfortable check-in cadence; agentic-tool culture pressures users to refresh Twitter daily.</p><p class="idea-source">with these agentic tools, not just called code and co-work, but like across the whole ecosystem, people feel this need to like check Twitter every single day to see what the absolute latest thing is.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1657s" target="_blank" rel="noopener">27:37</a><div class="idea-body"><p class="idea-summary">Cat wants users to be able to ignore the news and have the tool itself teach them what they need to know.</p><p class="idea-source">I would love people to feel like they can just open these tools. The tools will educate them</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>The /powerup command</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1667s" target="_blank" rel="noopener">27:47</a></div>
+          <p class="chapter-intro">The onboarding tutorial they swore they'd never build, until they had to.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1677s" target="_blank" rel="noopener">27:57</a><div class="idea-body"><p class="idea-summary">Anthropic originally opposed any onboarding flow — the product was meant to be intuitive enough not to need one.</p><p class="idea-source">in the past, we didn't actually want to do something like PowerUp because we felt like the product should be intuitive enough that you can that you don't actually need to go through any tutorial.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1705s" target="_blank" rel="noopener">28:25</a><div class="idea-body"><p class="idea-summary">They built /powerup anyway because users were asking which 10 of 100 features they actually need.</p><p class="idea-source">there's just so many users who wanted to know there's 100 features. What are the 10 that I absolutely need to use?</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>Why Anthropic has been so successful</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1712s" target="_blank" rel="noopener">28:32</a></div>
+          <p class="chapter-intro">The two ingredients Cat credits for Anthropic outpacing larger, better-funded competitors.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1728s" target="_blank" rel="noopener">28:48</a><div class="idea-body"><p class="idea-summary">Anthropic started way behind — least funded, no distribution, not first to market — and now reportedly hit $11B ARR.</p><p class="idea-source">Anthropic was way behind when it started. It was all shared this just like one of the least funded companies. Didn't have distribution.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1769s" target="_blank" rel="noopener">29:29</a><div class="idea-body"><p class="idea-summary">Ingredient #1: a unifying mission — bringing safe AGI to all of humanity — that everyone hires for and references constantly.</p><p class="idea-source">We hire people who care most about bringing safe AGI to all of humanity.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1795s" target="_blank" rel="noopener">29:55</a><div class="idea-body"><p class="idea-summary">Because the mission sits above any single product line, decisions cut across the entire org and execute in one direction.</p><p class="idea-source">because we put this like mission above any individual product line, we're able to make very fast decisions that cut across the entire org and like execute on them in a unified way.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1824s" target="_blank" rel="noopener">30:24</a><div class="idea-body"><p class="idea-summary">Two competing priorities are resolved by asking which serves the mission more — and the org gets behind that answer.</p><p class="idea-source">If there's two competing priorities, we'll talk about which one is more important for Anthropic's mission.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1891s" target="_blank" rel="noopener">31:31</a><div class="idea-body"><p class="idea-summary">Mission means teams sacrifice their own KRs for Anthropic's KRs — and feel good about it.</p><p class="idea-source">teams are willing to make sacrifices that hurt their own goals and their own KRs in service of anthropics goals and anthropics KRs.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1906s" target="_blank" rel="noopener">31:46</a><div class="idea-body"><p class="idea-summary">The extreme test of mission: Cat says she'd be extremely happy if Claude Code failed and Anthropic succeeded.</p><p class="idea-source">if cloud code failed but enthropic succeeded I would be extremely happy</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1928s" target="_blank" rel="noopener">32:08</a><div class="idea-body"><p class="idea-summary">Mission-driven focus is also why Anthropic hasn't shipped social networks or content feeds, unlike some peers.</p><p class="idea-source">I think versus another company maybe rhymes with bopen bi uh did a lot of different things</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1881s" target="_blank" rel="noopener">31:21</a><div class="idea-body"><p class="idea-summary">Ingredient #2 (related but distinct from mission): focus — the willingness to stop doing things that aren't load-bearing.</p><p class="idea-source">I think the second thing that we're very good at is focus.</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>When to use Claude Code vs. Desktop vs. Cowork</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1948s" target="_blank" rel="noopener">32:28</a></div>
+          <p class="chapter-intro">Cat's mental model for picking the right surface for the right task.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1964s" target="_blank" rel="noopener">32:44</a><div class="idea-body"><p class="idea-summary">Claude Code CLI is the most powerful surface — features land here first; Cat uses it for one-off coding tasks where she wants the latest.</p><p class="idea-source">I tend to use uh cloud code in the terminal when I'm just kicking off like a one-off coding task and I want all of the latest features.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1992s" target="_blank" rel="noopener">33:12</a><div class="idea-body"><p class="idea-summary">Desktop shines for front-end work — the preview pane lets you watch a web app build in real time as you chat.</p><p class="idea-source">desktop really shines when you're doing something that requires front-end work.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2017s" target="_blank" rel="noopener">33:37</a><div class="idea-body"><p class="idea-summary">The terminal feels alien to non-technical users — Desktop is the friendlier surface for them.</p><p class="idea-source">a terminal can feel very unfamiliar to someone who's nontechnical.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2052s" target="_blank" rel="noopener">34:12</a><div class="idea-body"><p class="idea-summary">Desktop is also a one-stop control plane — see CLI, desktop, web, and mobile sessions from a single view.</p><p class="idea-source">it's a one-stop control plane where you can see all of your tasks.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2057s" target="_blank" rel="noopener">34:17</a><div class="idea-body"><p class="idea-summary">Web and mobile fill the "touching grass" use case — kick off tasks while away from your laptop.</p><p class="idea-source">the benefit of web and mobile is that it's really great for kicking things off on the go.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2073s" target="_blank" rel="noopener">34:33</a><div class="idea-body"><p class="idea-summary">The meme of people tethering open laptops to their phones outside reveals a product gap — mobile fills it.</p><p class="idea-source">I can't count the number of people who I've seen like holding their laptop open like tethered to their phone while they're outside.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2104s" target="_blank" rel="noopener">35:04</a><div class="idea-body"><p class="idea-summary">Cowork's role is the work where the output isn't code — Slack zero, slide decks, customer docs, feature plans.</p><p class="idea-source">the role that this fills is there's a lot of work that everyone does where the output isn't code.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2135s" target="_blank" rel="noopener">35:35</a><div class="idea-body"><p class="idea-summary">Cat's split rule: code output → Claude Code (CLI / Desktop / mobile). Non-code output → Cowork.</p><p class="idea-source">if I'm building something where the output is code, I'll use cloud code or desktop or cloud code on mobile. And if the output is anything that's not code, I'll use co-work for it.</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>Tips for getting started with Cowork</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2158s" target="_blank" rel="noopener">35:58</a></div>
+          <p class="chapter-intro">The biggest setup mistake: not connecting your data sources first.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2168s" target="_blank" rel="noopener">36:08</a><div class="idea-body"><p class="idea-summary">Step one is connecting every relevant data source — Cowork's output quality is bounded by the context it can reach.</p><p class="idea-source">the first thing that you really need to do is connect all the data sources that are relevant to your role because co-work can only do a great job if it has access to all the context that it needs</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2186s" target="_blank" rel="noopener">36:26</a><div class="idea-body"><p class="idea-summary">Cat connects Google Calendar, Slack, Gmail, and Google Drive — so Cowork can pull threads, ask questions, find context.</p><p class="idea-source">I connect it to my Google calendar. I connect it to my Slack, to my Gmail, to my Google Drive</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2254s" target="_blank" rel="noopener">37:34</a><div class="idea-body"><p class="idea-summary">Worked example: she fed Cowork a draft and narrative for a conference talk and it worked autonomously for an hour producing a 20-page deck.</p><p class="idea-source">I just like fed this all into Co-work. I told Co-work the narrative that I want to tell. And it actually just worked for an hour.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2259s" target="_blank" rel="noopener">37:39</a><div class="idea-body"><p class="idea-summary">It searched Twitter, the evergreen launch room, and the Cloud Code announce channel to assemble the material.</p><p class="idea-source">It it walked through Twitter to see what we launched. It looked through our evergreen launch room. It looked in our Cloud Code announce channel</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2295s" target="_blank" rel="noopener">38:15</a><div class="idea-body"><p class="idea-summary">Output was good enough to ship with light edits — Cat prefers minimal-word slides and Cowork ran a touch wordy.</p><p class="idea-source">it was like pretty good. There were there were a few tweaks, so I did have to give it a round of feedback. I I like my slides to have extremely minimal words</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2297s" target="_blank" rel="noopener">38:17</a><div class="idea-body"><p class="idea-summary">Because Cowork has access to Anthropic's design system, the deck looks like an in-house designer made it.</p><p class="idea-source">because Co-work has access to our whole design system, it actually looks like an anthropic designer put it together.</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>Demo: Building a slide deck overnight with Cowork</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2324s" target="_blank" rel="noopener">38:44</a></div>
+          <p class="chapter-intro">A walkthrough of the prompt, the outline review, and the role the PM still plays.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2347s" target="_blank" rel="noopener">39:07</a><div class="idea-body"><p class="idea-summary">Recommended Cowork connections: Slack, Google Calendar, Gmail, Google Drive.</p><p class="idea-source">Slack, Google calendar, Gmail, G drive.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2351s" target="_blank" rel="noopener">39:11</a><div class="idea-body"><p class="idea-summary">Connect your communications tools plus wherever your team's source-of-truth lives.</p><p class="idea-source">You should connect your communications tools and where you store your source of truth data for what your team cares about</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2366s" target="_blank" rel="noopener">39:26</a><div class="idea-body"><p class="idea-summary">The actual prompt: make a slide deck for X conference, here's the PMM suggestion, here's a draft I don't like, propose an outline first.</p><p class="idea-source">I just wrote make me a slide deck for the code with cloud conference. This is what our PMM suggested it should cover.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2392s" target="_blank" rel="noopener">39:52</a><div class="idea-body"><p class="idea-summary">Cat reviewed the proposed outline and made the end-decision on what to include — the PM job persists at the outline stage.</p><p class="idea-source">I read through its proposal and all the different ideas that it had generated for what we could cover and I just made a decision on what I wanted to actually be in the final deck.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2402s" target="_blank" rel="noopener">40:02</a><div class="idea-body"><p class="idea-summary">This is what the PM role still is today: synthesize + decide, not generate.</p><p class="idea-source">I think this is like an example of what the role of the PM still is today.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2445s" target="_blank" rel="noopener">40:45</a><div class="idea-body"><p class="idea-summary">Once the outline was approved, Cowork autonomously built the entire deck over a few hours.</p><p class="idea-source">after this decision about the outline co-work just like went off for a few hours and built the whole slide deck.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2476s" target="_blank" rel="noopener">41:16</a><div class="idea-body"><p class="idea-summary">Design-system grounding: she uploaded the standardized external deck so Claude could see fonts, colors, and ~20 sample slide formats.</p><p class="idea-source">we actually already have like a standardized deck that we use across all of our external engagements. And so I just gave Claude access to that.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2500s" target="_blank" rel="noopener">41:40</a><div class="idea-body"><p class="idea-summary">Alternative: connect Figma MCP if your slide formats live in Figma — Cowork can pull from there.</p><p class="idea-source">You can also connect to like your Figma MCP if you if you have your slide format um saved there and it can pull that in.</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>Cat's PM tech stack and internal tools</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2508s" target="_blank" rel="noopener">41:48</a></div>
+          <p class="chapter-intro">Slack as the company OS, Claude Code unlocking a wave of custom internal apps.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2522s" target="_blank" rel="noopener">42:02</a><div class="idea-body"><p class="idea-summary">Cat's daily stack is heavy Claude Code, Cowork, plus Slack.</p><p class="idea-source">my stack is pretty heavily cloud code, co-work.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2527s" target="_blank" rel="noopener">42:07</a><div class="idea-body"><p class="idea-summary">Anthropic runs on Slack — Cat describes it as the core OS of the company.</p><p class="idea-source">Anthropic largely runs on Slack. Um, I feel like it's like the core OS of our company</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2537s" target="_blank" rel="noopener">42:17</a><div class="idea-body"><p class="idea-summary">About 30% of her time is pushing Cowork's boundaries so she has a strong sense of where it's still weak.</p><p class="idea-source">30% of my time is pushing the boundaries of what co-work can do so that I have a very strong sense of what we're not good at.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2554s" target="_blank" rel="noopener">42:34</a><div class="idea-body"><p class="idea-summary">She spends a lot of time talking to the model about why it made the mistakes it did.</p><p class="idea-source">I spent a lot of time talking with the model to understand why it makes mistakes that it does.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2562s" target="_blank" rel="noopener">42:42</a><div class="idea-body"><p class="idea-summary">Claude Code has lowered the barrier to building any custom internal app — and that's triggered a surge of personalized work software replacing generic tools.</p><p class="idea-source">we've seen this like surge in personalized work software that people are building for like custom use cases instead of um using tools that don't perfectly fit the use case.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2592s" target="_blank" rel="noopener">43:12</a><div class="idea-body"><p class="idea-summary">Example: a sales engineer built a web app that customizes core Claude Code decks per customer using Salesforce, Gong, and notes.</p><p class="idea-source">One of the sales folks on Cloud Code, he he realized he was making these like repetitive decks over and over and over again.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2634s" target="_blank" rel="noopener">43:54</a><div class="idea-body"><p class="idea-summary">The custom builder filters slides by deployment (Bedrock / Vertex / Cloud for Enterprise), compliance (HIPAA), and concern (e.g., code-review stage).</p><p class="idea-source">this customer is concerned about like the code review stage of the SLC. And so we'll add a slide about our code review features there.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2667s" target="_blank" rel="noopener">44:27</a><div class="idea-body"><p class="idea-summary">Manual deck customization used to take 20–30 minutes per customer; with this tool it takes seconds.</p><p class="idea-source">normally this is like manual work that could take 20 30 minutes</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2682s" target="_blank" rel="noopener">44:42</a><div class="idea-body"><p class="idea-summary">Slack is the durable internal tool nobody is trying to replace — even teams that disdain SaaS keep it as core infrastructure.</p><p class="idea-source">Slack is like the tool that nobody's it's just like nobody's trying to create their own. Slack just continues to win</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2721s" target="_blank" rel="noopener">45:21</a><div class="idea-body"><p class="idea-summary">Cat credits Slack's hackability — easy to build bots and integrate the way the team wants.</p><p class="idea-source">I also love how custom how easy they've made to customize it.</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>Which teams use the most tokens</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2807s" target="_blank" rel="noopener">46:47</a></div>
+          <p class="chapter-intro">Applied AI is the surprise heavyweight token consumer outside engineering.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2824s" target="_blank" rel="noopener">47:04</a><div class="idea-body"><p class="idea-summary">Applied AI is the team that most pushes the boundaries of Claude Code and Cowork after engineering.</p><p class="idea-source">applied AI is amazing at pushing the boundaries of what quad code and co-work can do.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2871s" target="_blank" rel="noopener">47:51</a><div class="idea-body"><p class="idea-summary">Applied AI is essentially a technical go-to-market role — helping customers adopt the latest API and model features.</p><p class="idea-source">it's helping our customers adopt the latest API and uh model features um across their company</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2910s" target="_blank" rel="noopener">48:30</a><div class="idea-body"><p class="idea-summary">Each Applied AI person can have 5–10 customer engagements in a single day.</p><p class="idea-source">in any given day can have like five to 10 customer engagements on a high day.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2919s" target="_blank" rel="noopener">48:39</a><div class="idea-body"><p class="idea-summary">Cowork is used overnight to assemble per-customer dossiers: agenda, prior asks, action items, top-of-mind.</p><p class="idea-source">the night before they'll ask it to summarize, okay, what are all my customer meetings that are coming up the next day?</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2941s" target="_blank" rel="noopener">49:01</a><div class="idea-body"><p class="idea-summary">Cowork can research current ETAs in Slack to keep customer-meeting notes current right up to the call.</p><p class="idea-source">co-work can also research answers so if if a customer asked okay when is feature X going to launch um co-work can help the pi person research through Slack to get the latest ETA</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=2990s" target="_blank" rel="noopener">49:50</a><div class="idea-body"><p class="idea-summary">As models get better, knowledge workers delegate more — token cost per engineer rises with every model jump and product improvement.</p><p class="idea-source">as the models get better people delegate far more tasks to it and they spend a lot more hours in tools like quad code and co-work</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3012s" target="_blank" rel="noopener">50:12</a><div class="idea-body"><p class="idea-summary">Per-engineer token cost is still much lower than average engineer salary — but the ratio is increasing.</p><p class="idea-source">it's still much lower than what the average engineer salary is, but we see the percentage increasing over time.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3033s" target="_blank" rel="noopener">50:33</a><div class="idea-body"><p class="idea-summary">Even Anthropic internal token budgets have caps — some people hit them.</p><p class="idea-source">We can use a lot of tokens. Some people do run into limits.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3067s" target="_blank" rel="noopener">51:07</a><div class="idea-body"><p class="idea-summary">Wasting tokens is "very frowned upon" — but the team trusts individuals to make the judgment call.</p><p class="idea-source">it's very frowned upon to waste tokens, but we do trust individuals to make that judgment call.</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>The emerging skills PMs need for AI companies</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3075s" target="_blank" rel="noopener">51:15</a></div>
+          <p class="chapter-intro">The single hardest emerging PM skill: knowing what to build for next month's model.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3098s" target="_blank" rel="noopener">51:38</a><div class="idea-body"><p class="idea-summary">The hardest emerging PM skill is defining what the product should look like a month from now.</p><p class="idea-source">being able to define what the product should look like a month from now.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3112s" target="_blank" rel="noopener">51:52</a><div class="idea-body"><p class="idea-summary">Great PMs read patterns from how users abuse existing limits, set direction, and pivot when capability moves.</p><p class="idea-source">there are patterns that the best PMs can see based on how users are abusing the limits of the existing product</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3134s" target="_blank" rel="noopener">52:14</a><div class="idea-body"><p class="idea-summary">It's very hard to be the right amount of AGI-pilled — over-target the AGI version and you build for a model that doesn't exist yet.</p><p class="idea-source">I think it is very hard to be the right amount of AGI pilled</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3151s" target="_blank" rel="noopener">52:31</a><div class="idea-body"><p class="idea-summary">Building for the super-AGI model is easy — just a text box where the model figures out everything. The hard work is today's model.</p><p class="idea-source">You can actually just have a text box again where you tell the model what you want.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3173s" target="_blank" rel="noopener">52:53</a><div class="idea-body"><p class="idea-summary">The job is to elicit maximum capability from the current model — guide users onto its golden path, patch its weaknesses.</p><p class="idea-source">the hard thing is figuring out for the current model. How do you elicit the maximum capability?</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3212s" target="_blank" rel="noopener">53:32</a><div class="idea-body"><p class="idea-summary">You build this skill by spending massive amounts of time using the model.</p><p class="idea-source">I think it's spending a ton of time talking and using the model.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3216s" target="_blank" rel="noopener">53:36</a><div class="idea-body"><p class="idea-summary">Underrated technique: ask the model to introspect on its own unexpected behaviors.</p><p class="idea-source">One of the things I really like to do is to ask the model to introspect on its own behaviors.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3228s" target="_blank" rel="noopener">53:48</a><div class="idea-body"><p class="idea-summary">Example: when Claude makes a front-end change and runs tests but doesn't use the UI, asking it why reveals harness gaps (delegated sub-agent didn't run UI tests, etc.).</p><p class="idea-source">there's like situations where the model will make a front-end change and run tests but not actually use the UI. It's actually pretty useful to ask the model to reflect on why it did this.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3271s" target="_blank" rel="noopener">54:31</a><div class="idea-body"><p class="idea-summary">Find the 5 people whose model feedback is most accurate — trust their feedback disproportionately for fast iteration.</p><p class="idea-source">to figure out who the taste who are the users who you trust the most to give you accurate feedback about the model.</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>Why building evals is underappreciated</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3300s" target="_blank" rel="noopener">55:00</a></div>
+          <p class="chapter-intro">10 good evals beats 100 mediocre ones — and most teams don't even have 10.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3306s" target="_blank" rel="noopener">55:06</a><div class="idea-body"><p class="idea-summary">Building evals is the third skill that helps but most teams don't enjoy doing.</p><p class="idea-source">the third thing that is useful but not everyone loves doing is building evals.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3309s" target="_blank" rel="noopener">55:09</a><div class="idea-body"><p class="idea-summary">You don't need hundreds of evals — even 10 good ones help the team quantify the goal and measure progress.</p><p class="idea-source">You don't need to build hundreds of evals for them to be useful. Just building 10 great evals is important for helping the team quantify what the goal is</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3327s" target="_blank" rel="noopener">55:27</a><div class="idea-body"><p class="idea-summary">Evals are underappreciated — more PMs and engineers should be working on them.</p><p class="idea-source">I think eval is this like underappreciated thing that more more PMs more engineers should be working on.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3375s" target="_blank" rel="noopener">56:15</a><div class="idea-body"><p class="idea-summary">Cat personally jumps into eval-writing when a feature needs sharper product definition — the eval often IS the spec.</p><p class="idea-source">I personally jump into evals when there's a feature that I think needs a bit more product definition</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3420s" target="_blank" rel="noopener">57:00</a><div class="idea-body"><p class="idea-summary">Two human evaluators Cat trusts most: Amanda (who molds Claude's character) and the rest of the Claude Code team via team lunches.</p><p class="idea-source">two people who I think are incredible at this are um one Amanda who def who molds Claude's character.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3438s" target="_blank" rel="noopener">57:18</a><div class="idea-body"><p class="idea-summary">Crafting Claude's character is harder than coding — there's no easy success-verification signal.</p><p class="idea-source">Even coding is easier because you can verify the success whereas crafting the character requires a very strong sense of conviction</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3464s" target="_blank" rel="noopener">57:44</a><div class="idea-body"><p class="idea-summary">When a new model is being tested, team lunches are the fastest vibe-check loop — ask every person what they sense.</p><p class="idea-source">to just like at these team lunches just like go to every single person and just be like, "Hey, what is your vibe on the model?"</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3482s" target="_blank" rel="noopener">58:02</a><div class="idea-body"><p class="idea-summary">Sample qualitative feedback: model isn't fully explaining its thinking, loves writing memories (quality uncertain), doesn't test itself enough.</p><p class="idea-source">this model is like not fully explaining its thinking. It's like too abrupt.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3504s" target="_blank" rel="noopener">58:24</a><div class="idea-body"><p class="idea-summary">Vibe feedback becomes the hypothesis — then the team extracts quantitative data to test whether the pattern is real.</p><p class="idea-source">So that informs what data we look at to verify okay is this a larger pattern.</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>Why Claude's character and personality matter so much</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3524s" target="_blank" rel="noopener">58:44</a></div>
+          <p class="chapter-intro">Character isn't decoration — it's load-bearing for what makes Claude usable.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3589s" target="_blank" rel="noopener">59:49</a><div class="idea-body"><p class="idea-summary">Users name Claude's personality as one of the top reasons they prefer it — lighthearted and fun, also extremely competent.</p><p class="idea-source">people bring up the most where they just really love that COD is like it's it's like lighthearted and fun.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3599s" target="_blank" rel="noopener">59:59</a><div class="idea-body"><p class="idea-summary">Low ego is a load-bearing trait: when told it's wrong, Claude owns the mistake and offers to fix.</p><p class="idea-source">People really like that Claude's low ego.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3611s" target="_blank" rel="noopener">1:00:11</a><div class="idea-body"><p class="idea-summary">Positivity matters too — when a task feels insurmountable, Claude nudges forward with steps rather than agreeing it's bad.</p><p class="idea-source">if you're feeling like, oh, this is like an insurmountable task. I don't know h how to get started. Quad is like, okay, it's okay.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3628s" target="_blank" rel="noopener">1:00:28</a><div class="idea-body"><p class="idea-summary">A great co-worker — and a great model — combines positivity, bias to action, and earnest feedback rather than sycophancy.</p><p class="idea-source">I think part of what makes a great co-orker is this positivity, this like bias towards action, this this ability to give you like earnest feedback, not just agreeing with every single thing that you say.</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>How new models force product changes</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3644s" target="_blank" rel="noopener">1:00:44</a></div>
+          <p class="chapter-intro">Every model launch triggers a system-prompt audit and a feature-deletion pass.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3666s" target="_blank" rel="noopener">1:01:06</a><div class="idea-body"><p class="idea-summary">The first thing new models change is what gets removed — features that were crutches for an earlier model.</p><p class="idea-source">A lot of the changes that we make with a new model is removing features that are no longer needed.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3680s" target="_blank" rel="noopener">1:01:20</a><div class="idea-body"><p class="idea-summary">Classic example: a to-do list was added because old Claude would stop halfway through 20-call-site refactors.</p><p class="idea-source">the classic example for this is a to-do list. When we first launched Quad Code, people would ask it to do these large refactors and Quad Code would say, "Okay, cool. I need to change these like 20 call sites and it would go and change five of them and then stop."</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3721s" target="_blank" rel="noopener">1:02:01</a><div class="idea-body"><p class="idea-summary">By Opus 4 the to-do list crutch was no longer needed — the model uses it naturally without prompting.</p><p class="idea-source">with Opus 4 and later models we realized that we didn't need to force it to use this to-do list. It would like naturally use it itself.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3766s" target="_blank" rel="noopener">1:02:46</a><div class="idea-body"><p class="idea-summary">"The model will eat your harness for breakfast" — capabilities subsume prior workarounds.</p><p class="idea-source">that the model will eat your harness for breakfast.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3790s" target="_blank" rel="noopener">1:03:10</a><div class="idea-body"><p class="idea-summary">Every time a new model launches, the team reads the entire system prompt and removes any reminder the model no longer needs.</p><p class="idea-source">we read through the entire system prompt and we reflect on, okay, for each of these sections, does the model really need this reminder anymore? And if not, we'll remove it.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3800s" target="_blank" rel="noopener">1:03:20</a><div class="idea-body"><p class="idea-summary">The most exciting unlock with new models is entirely new features that prior model accuracy couldn't support.</p><p class="idea-source">The most exciting thing that new models unlocks though is just like entirely new features.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3816s" target="_blank" rel="noopener">1:03:36</a><div class="idea-body"><p class="idea-summary">Code Review is the canonical example: prior attempts failed; Opus 4.5/4.6 and Sonnet 4.6 made it reliable enough to block merges on.</p><p class="idea-source">the slashcode review command in the past and it was only with the most recent models that we felt like okay this code review is so good that our engineering team relies on this code review to pass before we merge PRs</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3861s" target="_blank" rel="noopener">1:04:21</a><div class="idea-body"><p class="idea-summary">Multi-agent code review can traverse the entire codebase before merge — only possible with the newest models.</p><p class="idea-source">we are now able to like run multiple code review agents simultaneously to traverse traverse the entirety of the codebase</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3892s" target="_blank" rel="noopener">1:04:52</a><div class="idea-body"><p class="idea-summary">Therefore: build products that don't yet work. When the next model lands, swap it into the prototype and see if it closes the gap.</p><p class="idea-source">it's pretty important to build products that don't necessarily work yet so that you know okay what is missing um for this product to work</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>The vision for Claude Code and Cowork</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3911s" target="_blank" rel="noopener">1:05:11</a></div>
+          <p class="chapter-intro">The roadmap is one task → many tasks → a fleet of remote agents.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3932s" target="_blank" rel="noopener">1:05:32</a><div class="idea-body"><p class="idea-summary">The core building block of both products is making individual tasks reliably succeed.</p><p class="idea-source">the core building block is making individual tasks successful</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3960s" target="_blank" rel="noopener">1:06:00</a><div class="idea-body"><p class="idea-summary">As models improved, users moved from one task at a time to several — "multi-coding" became a thing near end of 2025.</p><p class="idea-source">we see people moving towards doing multiple tasks at the same time. So multi-coding was this big thing in towards the end of 2025</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3985s" target="_blank" rel="noopener">1:06:25</a><div class="idea-body"><p class="idea-summary">Next stage: running 50 or hundreds of Claudes at a time — which won't fit on a local machine.</p><p class="idea-source">okay next maybe you're going to run like 50 clouds at a time or hundreds of clouds at a time.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4006s" target="_blank" rel="noopener">1:06:46</a><div class="idea-body"><p class="idea-summary">At fleet scale, runs are remote — and the product question becomes "how do I know which tasks need my attention?"</p><p class="idea-source">How do we build the interface so that you as a human know which tasks you need to look look into?</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4014s" target="_blank" rel="noopener">1:06:54</a><div class="idea-body"><p class="idea-summary">Critical capability: the agent fully verifies its own work before claiming "done" — so humans can trust the status.</p><p class="idea-source">How do we make sure that the agent is fully verifying work so that when you look at a task and it says it's done, you like can very quickly verify</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4026s" target="_blank" rel="noopener">1:07:06</a><div class="idea-body"><p class="idea-summary">The fleet must be self-improving — feedback on one task changes every future run automatically.</p><p class="idea-source">How do we make sure that this like process is self-improving so that when you do see a task that isn't done to your liking, you can give it feedback and the model will know for every future run to incorporate that feedback</p></div></li>
+          </ol>
+
+          <figure class="diagram">
+            <svg viewBox="0 0 720 200" role="img" aria-label="Progression from single task to remote agent fleet">
+              <defs>
+                <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+                  <path d="M0 0 L10 5 L0 10 Z" fill="oklch(0.40 0.14 22)"/>
+                </marker>
+              </defs>
+              <g font-family="-apple-system,BlinkMacSystemFont,system-ui,sans-serif" font-size="13" fill="oklch(0.20 0.008 60)">
+                <rect x="20"  y="60" width="150" height="80" rx="8" fill="oklch(0.95 0.025 22)" stroke="oklch(0.40 0.14 22)" stroke-width="1.5"/>
+                <text x="95"  y="92"  text-anchor="middle" font-weight="700">Single task</text>
+                <text x="95"  y="112" text-anchor="middle" fill="oklch(0.42 0.008 60)" font-size="12">local · one Claude</text>
+
+                <line x1="176" y1="100" x2="200" y2="100" stroke="oklch(0.40 0.14 22)" stroke-width="2" marker-end="url(#ar)"/>
+
+                <rect x="206" y="60" width="150" height="80" rx="8" fill="#fff" stroke="oklch(0.20 0.008 60)" stroke-width="1.5"/>
+                <text x="281" y="92"  text-anchor="middle" font-weight="700">Multi-coding</text>
+                <text x="281" y="112" text-anchor="middle" fill="oklch(0.42 0.008 60)" font-size="12">~6 in parallel</text>
+
+                <line x1="362" y1="100" x2="386" y2="100" stroke="oklch(0.40 0.14 22)" stroke-width="2" marker-end="url(#ar)"/>
+
+                <rect x="392" y="60" width="150" height="80" rx="8" fill="#fff" stroke="oklch(0.20 0.008 60)" stroke-width="1.5"/>
+                <text x="467" y="92"  text-anchor="middle" font-weight="700">Agent fleet</text>
+                <text x="467" y="112" text-anchor="middle" fill="oklch(0.42 0.008 60)" font-size="12">50–hundreds</text>
+
+                <line x1="548" y1="100" x2="572" y2="100" stroke="oklch(0.40 0.14 22)" stroke-width="2" marker-end="url(#ar)"/>
+
+                <rect x="578" y="60" width="122" height="80" rx="8" fill="oklch(0.95 0.025 22)" stroke="oklch(0.40 0.14 22)" stroke-width="1.5"/>
+                <text x="639" y="92"  text-anchor="middle" font-weight="700">Remote</text>
+                <text x="639" y="112" text-anchor="middle" fill="oklch(0.42 0.008 60)" font-size="12">self-verifying</text>
+
+                <text x="360" y="30" text-anchor="middle" fill="oklch(0.62 0.008 60)" font-size="11" letter-spacing="0.06em">CONSTRAINT SHIFTS WITH SCALE</text>
+                <text x="360" y="180" text-anchor="middle" fill="oklch(0.62 0.008 60)" font-size="11" font-style="italic">RAM-bound → orchestration-bound → trust-bound</text>
+              </g>
+            </svg>
+            <figcaption>The product roadmap for Claude Code and Cowork follows the user's working scale. Each leap shifts the design problem.</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>Advice for thriving in an AI-driven world</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4042s" target="_blank" rel="noopener">1:07:22</a></div>
+          <p class="chapter-intro">Automate the tedious parts of your job to free 20% of your time for what you actually want to do.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4069s" target="_blank" rel="noopener">1:07:49</a><div class="idea-body"><p class="idea-summary">AI gives everybody more leverage — anytime you notice a repeated manual task, think about automating it.</p><p class="idea-source">I think AI gives everybody a ton more leverage than they used to.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4087s" target="_blank" rel="noopener">1:08:07</a><div class="idea-body"><p class="idea-summary">Every job has creative parts you love and tedious parts you hate. AI's promise is to do the tedious parts.</p><p class="idea-source">Most people have like creative parts of their job that they absolutely love and then like tedious parts of their job that they really hate doing.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4101s" target="_blank" rel="noopener">1:08:21</a><div class="idea-body"><p class="idea-summary">AI learns from every manual run, generalizes, then runs automatically — so the human focuses on the creative work.</p><p class="idea-source">it can learn from every time that you've done that manual task and generalize and then run it automatically</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4143s" target="_blank" rel="noopener">1:09:03</a><div class="idea-body"><p class="idea-summary">If AI takes the grunt work, you have an extra 20% of time — finally pick up the pet project the company always needed.</p><p class="idea-source">If AI can take care of the like grunt work, then you have you have this extra 20% time now that you might not have before.</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>Why 95% automation isn't good enough</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4158s" target="_blank" rel="noopener">1:09:18</a></div>
+          <p class="chapter-intro">If your automation works 95% of the time, it isn't really an automation.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4185s" target="_blank" rel="noopener">1:09:45</a><div class="idea-body"><p class="idea-summary">Users typically get an automation to 90–95% accuracy then give up — and that's the failure mode Cat wants to flag.</p><p class="idea-source">sometimes I see users trying trying to automate something, getting it to like 90 95% accuracy and then giving up on it.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4205s" target="_blank" rel="noopener">1:10:05</a><div class="idea-body"><p class="idea-summary">If an automation doesn't work 100% of the time, it isn't really an automation.</p><p class="idea-source">if an automation doesn't work 100% of the time, it's not really an automation.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4213s" target="_blank" rel="noopener">1:10:13</a><div class="idea-body"><p class="idea-summary">The last 5–10% takes disproportionate effort — building the automation may be slower than doing the task yourself once.</p><p class="idea-source">that last 5 to 10% does take more time. Also, building the automation is often a lot slower than you doing it yourself.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4226s" target="_blank" rel="noopener">1:10:26</a><div class="idea-body"><p class="idea-summary">Put in the elbow grease — teach Claude your preferences with feedback until it hits 100% on the task.</p><p class="idea-source">Put in the elbow grease to teach quality your preferences to like give it feedback so that it can improve its skill so that it can get to that 100%.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4248s" target="_blank" rel="noopener">1:10:48</a><div class="idea-body"><p class="idea-summary">Cat admits she's guilty too — her Cowork Gmail-inbox-zero project is time-consuming and not yet there.</p><p class="idea-source">I've been teaching co-work to try to get me to inbox zero for Gmail and it has not been it it has been very time consuming</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4289s" target="_blank" rel="noopener">1:11:29</a><div class="idea-body"><p class="idea-summary">Anthropic is working to make custom commands easier — today you need to know about skills, how to define them, how to update them, and where to read them.</p><p class="idea-source">We also are working on making the flow for customizing these commands a lot easier because right now I think you have to like know too many concepts.</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>Build apps you use every day, not prototypes</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4318s" target="_blank" rel="noopener">1:11:58</a></div>
+          <p class="chapter-intro">Two failure modes — never building, and over-customizing instead of building.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4337s" target="_blank" rel="noopener">1:12:17</a><div class="idea-body"><p class="idea-summary">Build apps you actually use every day — only through usage do you extract real value.</p><p class="idea-source">I would really push people towards building apps that you're actually using every single day because I think only through that usage are you actually getting the value.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4358s" target="_blank" rel="noopener">1:12:38</a><div class="idea-body"><p class="idea-summary">One-shotted demos you never return to teach almost nothing.</p><p class="idea-source">there's only so much you learn from that when it's like, okay, I just one-shoted something. Oh, that's cool. And then you never come back to it.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4380s" target="_blank" rel="noopener">1:13:00</a><div class="idea-body"><p class="idea-summary">The opposite failure: people obsessing over customizing their workflow rather than shipping anything.</p><p class="idea-source">this polar opposite end of people who like obsess around customizing their tool like adding a ton of skills and MCPs</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4393s" target="_blank" rel="noopener">1:13:13</a><div class="idea-body"><p class="idea-summary">Over-customizing can actively distract from launching the product you set out to build.</p><p class="idea-source">I think sometimes that can even distract from your core goal of like launching some product or building some feature.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4432s" target="_blank" rel="noopener">1:13:52</a><div class="idea-body"><p class="idea-summary">Simple setups actually work better than elaborate ones.</p><p class="idea-source">I think the simple setups actually work better.</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>The divide between AI skeptics and believers</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4421s" target="_blank" rel="noopener">1:13:41</a></div>
+          <p class="chapter-intro">Karpathy's tweet on the chat-first vs. action-first split, with Cat's read on what changed.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4446s" target="_blank" rel="noopener">1:14:06</a><div class="idea-body"><p class="idea-summary">Karpathy's observation: people who tried 2024 chatbots once and bounced view AI as overhyped; people coding with it see full power.</p><p class="idea-source">people that tried chatbt claw back in the day. it was like okay and they're like nah this is this is terrible</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4478s" target="_blank" rel="noopener">1:14:38</a><div class="idea-body"><p class="idea-summary">Cat names the shift: 2024 products were chat-based, the Claude Code generation is action-based.</p><p class="idea-source">the 2024 generation of products were chatbased and the quad code generation of products is action-based.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4490s" target="_blank" rel="noopener">1:14:50</a><div class="idea-body"><p class="idea-summary">The aha moment is feeling the agent do things on your behalf — not just telling you what to do.</p><p class="idea-source">the like big aha moment people have is when quad can just like do things on your behalf.</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="chapter-block">
+        <div class="chapter-num"></div>
+        <div>
+          <div class="chapter-head"><h3>Lightning round</h3><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4519s" target="_blank" rel="noopener">1:15:19</a></div>
+          <p class="chapter-intro">Books, films, products, mottos, a favorite thinking-word, and what to do after AGI.</p>
+          <ol class="ideas">
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4538s" target="_blank" rel="noopener">1:15:38</a><div class="idea-body"><p class="idea-summary">Book recommendations: <em>How Asia Works</em> on economic development, plus two more below.</p><p class="idea-source">I really like how Asia works. Um, it's a story about economic development</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4556s" target="_blank" rel="noopener">1:15:56</a><div class="idea-body"><p class="idea-summary"><em>The Technology Trap</em> — past tech revolutions (industrial, computer) and their effect on workers; relevant for steering this transition.</p><p class="idea-source">the past few technology revolutions. So the industrial revolution and the computer revolution and how this has affected uh workers.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4578s" target="_blank" rel="noopener">1:16:18</a><div class="idea-body"><p class="idea-summary">On the fun side: <em>The Paper Menagerie</em>, short stories on coming of age, AI, and self-discovery.</p><p class="idea-source">I really like paper menagerie. Um it's just like a book of short stories about like coming of age and AI</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4594s" target="_blank" rel="noopener">1:16:34</a><div class="idea-body"><p class="idea-summary">Favorite shows: Drive to Survive and Free Solo — both about the purity of a singular pursuit.</p><p class="idea-source">there's just something very satisfying about people being so obsessed with like a singular engineering goal and just like the purity of their pursuit.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4656s" target="_blank" rel="noopener">1:17:36</a><div class="idea-body"><p class="idea-summary">Cat climbs — and says Free Solo's moves are things she doubts she'll do in her lifetime even in a gym with a rope.</p><p class="idea-source">the kinds the kinds of moves he's doing on the wall are things that like I don't think I will ever be able to do in my lifetime</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4681s" target="_blank" rel="noopener">1:18:01</a><div class="idea-body"><p class="idea-summary">Favorite non-Claude product: Waymo — twice-daily commute use.</p><p class="idea-source">The product that is like most changed my life outside of cloud products is probably Whimo.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4694s" target="_blank" rel="noopener">1:18:14</a><div class="idea-body"><p class="idea-summary">Two reasons Waymo beats rideshare: no guilt when it waits, and full privacy for taking work calls in-car.</p><p class="idea-source">I don't feel bad if a Whimo is waiting for me.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4731s" target="_blank" rel="noopener">1:18:51</a><div class="idea-body"><p class="idea-summary">Net result: Waymo gives her back roughly 30 minutes a day.</p><p class="idea-source">this has given me back like 30 minutes every day.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4739s" target="_blank" rel="noopener">1:18:59</a><div class="idea-body"><p class="idea-summary">Pricing take that surprised her: she'd happily pay a 2x premium over Uber/Lyft for Waymo.</p><p class="idea-source">I always thought Whimo needed to be priced lower than Uber and Lyft to succeed, but actually I'm like very happy to pay a 2x premium for it.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4775s" target="_blank" rel="noopener">1:19:35</a><div class="idea-body"><p class="idea-summary">Life motto: just do things.</p><p class="idea-source">Just do things.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4796s" target="_blank" rel="noopener">1:19:56</a><div class="idea-body"><p class="idea-summary">"Jobs are fake" — if you know your constraints, you can figure out the right move and just do it.</p><p class="idea-source">I think jobs are fake. If you understand the constraints, you can figure out what you can do and then just like try to do it quickly</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4810s" target="_blank" rel="noopener">1:20:10</a><div class="idea-body"><p class="idea-summary">"Just do things" is liberating inside companies with rigid role definitions and rigid team-scope boundaries.</p><p class="idea-source">in a lot of companies like roles are very strictly defined like okay this is what the PM does, this is what the designer does</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4858s" target="_blank" rel="noopener">1:20:58</a><div class="idea-body"><p class="idea-summary">Cat credits her time at Scale (when it was 20 people) for teaching her this — no process, big problems, total empowerment.</p><p class="idea-source">actually working at scale when we were 20 people. And so there was just no process and we had like really big problems that we needed to solve.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4899s" target="_blank" rel="noopener">1:21:39</a><div class="idea-body"><p class="idea-summary">You have to unlearn the school habit of "do what you're told for a good grade" — even when others think the right move is dumb.</p><p class="idea-source">you have to kind of unlearn that of like, okay, I'm just going to do the thing that needs to be done and even if people think it's dumb, I think it's the right thing to do.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4923s" target="_blank" rel="noopener">1:22:03</a><div class="idea-body"><p class="idea-summary">Favorite Claude thinking-word: "manifesting." It's also the sticker on her laptop.</p><p class="idea-source">I really like manifesting. It's also like the sticker that I I have</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4943s" target="_blank" rel="noopener">1:22:23</a><div class="idea-body"><p class="idea-summary">Post-AGI plan: she expects diffusion to take a long time, so the near-term job is helping the world along.</p><p class="idea-source">I think it it will take a long time for AGI to diffuse across society. So, I think the immediate thing is actually just like helping bring the world along.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4960s" target="_blank" rel="noopener">1:22:40</a><div class="idea-body"><p class="idea-summary">Non-serious post-AGI plan: move to Fontainebleau and climb 10,000 boulders, read 1–2 books a week (currently at 0.5).</p><p class="idea-source">I'll probably just like live in some I'll probably move to like Fountain Blue and just like live amongst 10,000 boulders and climb for a bit.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=5033s" target="_blank" rel="noopener">1:23:53</a><div class="idea-body"><p class="idea-summary">How to be useful to her: send specific reproducible failures of Claude Code or Cowork — those are what teams act on.</p><p class="idea-source">tell us where cloud code and co-work aren't working well for you... the things that we thrive on is edge cases, errors, like specific tasks that we can reproduce where quad code or co-work fail.</p></div></li>
+            <li><a class="timestamp" href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=5085s" target="_blank" rel="noopener">1:24:45</a><div class="idea-body"><p class="idea-summary">Anthropic runs internal channels for "user love" and feedback — the broader team acts on what gets posted.</p><p class="idea-source">we have this channel of like user love and so whenever you guys share a success story we post it there and whenever you guys share like issues with our product we put it into our feedback channel.</p></div></li>
+          </ol>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="quotes">
+    <div class="row">
+      <div class="rail"><h2>quotes</h2></div>
+      <div class="body">
+        <div class="quotes-stack">
+          <blockquote>If cloud code failed but enthropic succeeded I would be extremely happy<span class="attribution">Cat Wu · <a href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1906s" target="_blank" rel="noopener" class="timestamp">31:46</a></span></blockquote>
+          <blockquote>As code becomes much cheaper to write, the thing that becomes more valuable is deciding what to write.<span class="attribution">Cat Wu · <a href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=1098s" target="_blank" rel="noopener" class="timestamp">18:18</a></span></blockquote>
+          <blockquote>if an automation doesn't work 100% of the time, it's not really an automation.<span class="attribution">Cat Wu · <a href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4205s" target="_blank" rel="noopener" class="timestamp">1:10:05</a></span></blockquote>
+          <blockquote>the 2024 generation of products were chatbased and the quad code generation of products is action-based.<span class="attribution">Cat Wu · <a href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4478s" target="_blank" rel="noopener" class="timestamp">1:14:38</a></span></blockquote>
+          <blockquote>the hard thing is figuring out for the current model. How do you elicit the maximum capability?<span class="attribution">Cat Wu · <a href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=3173s" target="_blank" rel="noopener" class="timestamp">52:53</a></span></blockquote>
+          <blockquote>I think jobs are fake.<span class="attribution">Cat Wu · <a href="https://www.youtube.com/watch?v=PplmzlgE0kg&t=4796s" target="_blank" rel="noopener" class="timestamp">1:19:56</a></span></blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="actions">
+    <div class="row">
+      <div class="rail"><h2>try this</h2></div>
+      <div class="body">
+        <ul class="actions">
+          <li>Pick one manual workflow you do weekly — automate it with Claude Code or Cowork and push to 100% accuracy, not 90%.</li>
+          <li>Build apps you actually use every day, not throwaway prototypes you abandon after one shot.</li>
+          <li>Connect Slack, Gmail, Google Calendar, and Google Drive to Cowork before doing anything else with it.</li>
+          <li>Build a product that doesn't fully work yet — when the next model lands, swap it in and see if the gap closes.</li>
+          <li>When the model does something unexpected, ask it to introspect on why — the answer tells you what's wrong in your system prompt or harness.</li>
+          <li>Try the <code>/powerup</code> command in Claude Code to learn the 10 features you actually need.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="topics">
+    <div class="row">
+      <div class="rail"></div>
+      <div class="body">
+        <p class="topics-line">
+          <span class="label">Topics</span>
+          <span class="tag">Anthropic</span><span class="tag">Claude Code</span><span class="tag">Cowork</span><span class="tag">product management</span><span class="tag">shipping velocity</span><span class="tag">evals</span><span class="tag">product taste</span><span class="tag">just do things</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="colophon">
+    <div class="row">
+      <div class="rail"></div>
+      <div class="body">
+        Recap of <a href="https://www.youtube.com/watch?v=PplmzlgE0kg" target="_blank" rel="noopener">How Anthropic's product team moves faster than anyone else</a> by Lenny's Podcast.
+        Timestamps cue the player above (Ctrl/Cmd-click to open YouTube instead).
+        Transcript captions are auto-generated — minor transcription artifacts like "claw" (Claude/cloud), "Whimo" (Waymo), or "queer" (clear) appear verbatim in the source snippets.
+      </div>
+    </div>
+  </footer>
+</div>
+
+<button class="player-restore-bar" id="player-restore" type="button" aria-label="Show player">↻ Show player</button>
+
+<script>
+  (function () {
+    const VIDEO_ID = "PplmzlgE0kg";
+    const player = document.getElementById("ytplayer");
+    const hero = document.querySelector("header.hero");
+    const closeBtn = document.getElementById("player-close");
+    const restoreBtn = document.getElementById("player-restore");
+    let hasInteracted = false;
+
+    function seekAndPlay(seconds) {
+      if (document.body.classList.contains("player-hidden")) {
+        document.body.classList.remove("player-hidden");
+      }
+      if (!hasInteracted) {
+        player.src = "https://www.youtube.com/embed/" + VIDEO_ID +
+          "?start=" + seconds + "&autoplay=1&enablejsapi=1&rel=0";
+        hasInteracted = true;
+        return;
+      }
+      try {
+        player.contentWindow.postMessage(
+          JSON.stringify({ event: "command", func: "seekTo", args: [seconds, true] }), "*");
+        player.contentWindow.postMessage(
+          JSON.stringify({ event: "command", func: "playVideo", args: "" }), "*");
+      } catch (e) {
+        player.src = "https://www.youtube.com/embed/" + VIDEO_ID +
+          "?start=" + seconds + "&autoplay=1&enablejsapi=1&rel=0";
+      }
+    }
+
+    document.addEventListener("click", function (e) {
+      const a = e.target.closest("a.timestamp");
+      if (!a) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+      const href = a.getAttribute("href") || "";
+      const m = href.match(/[?&]t=(\d+)/);
+      if (!m) return;
+      e.preventDefault();
+      seekAndPlay(parseInt(m[1], 10));
+    });
+
+    if (hero && "IntersectionObserver" in window) {
+      const io = new IntersectionObserver(function (entries) {
+        for (const entry of entries) {
+          document.body.classList.toggle("player-floating", !entry.isIntersecting);
+        }
+      }, { rootMargin: "-40px 0px 0px 0px", threshold: 0 });
+      io.observe(hero);
+    }
+
+    if (closeBtn) closeBtn.addEventListener("click", function () { document.body.classList.add("player-hidden"); });
+    if (restoreBtn) restoreBtn.addEventListener("click", function () { document.body.classList.remove("player-hidden"); });
+  })();
+</script>
+</body>
+</html>
